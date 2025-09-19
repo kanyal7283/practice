@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
-//const authRoutes = require('./routes/authRoutes');
-
+const authRoutes = require('./routes/routes');
+const router = express.Router();
 
 // Middleware to set security headers
   app.use((req, res, next) => {
@@ -22,13 +22,17 @@ app.use(bodyParser.json());
 });
 
 
+
+
 // Example of logging an API request
 app.get('/', (req, res) => {
-  res.send('Welcome to service invoice api ------first---->.');
+  res.send('Welcome to practice api ');
 });
 
 // Use the auth routes
-//app.use('/api', authRoutes);
+app.use('/api',authRoutes);
+
+
 
 // Start the server
 const PORT = (process.env.PORT ?? 9000);
